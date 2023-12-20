@@ -33,7 +33,7 @@ namespace MovieApi.Controllers
         }
         
         // GET: api/Movies?pageNumber=2
-        [HttpGet]
+        [HttpGet("TopRated")]
         public async Task<ActionResult<IEnumerable<Movie>>> GetTopRatedMovies(int pageNumber)
         {
             var movies = await _movieRepository.GetTopRatedMovies(pageNumber);
