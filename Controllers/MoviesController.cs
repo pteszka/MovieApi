@@ -9,16 +9,16 @@ namespace MovieApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MovieController : ControllerBase
+    public class MoviesController : ControllerBase
     {
         private readonly IMovieRepository _movieRepository;
 
-        public MovieController(IMovieRepository movieRepository)
+        public MoviesController(IMovieRepository movieRepository)
         {
             _movieRepository = movieRepository;
         }
 
-        // GET: api/Movie/5
+        // GET: api/Movies/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Movie>> GetMovie(int id)
         {
@@ -32,7 +32,7 @@ namespace MovieApi.Controllers
             return Ok(movie);
         }
         
-        // GET: api/Movie?pageNumber=2
+        // GET: api/Movies?pageNumber=2
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Movie>>> GetTopRatedMovies(int pageNumber)
         {
