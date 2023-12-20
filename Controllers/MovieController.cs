@@ -11,12 +11,10 @@ namespace MovieApi.Controllers
     [ApiController]
     public class MovieController : ControllerBase
     {
-        private readonly DataContext _context;
         private readonly IMovieRepository _movieRepository;
 
-        public MovieController(DataContext context, IMovieRepository movieRepository)
+        public MovieController(IMovieRepository movieRepository)
         {
-            _context = context;
             _movieRepository = movieRepository;
         }
 
