@@ -9,4 +9,6 @@ public interface IMovieRepository
 {
     Task<Movie> GetMovieById(int id);
     Task<IEnumerable<Movie>> GetTopRatedMovies(int pageNumber);
+    Task<IEnumerable<Movie>> GetMostPopularMovies(int pageNumber);
+
 }

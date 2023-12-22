@@ -17,7 +17,7 @@ public class MovieRepository : IMovieRepository
         _client = httpClientFactory.CreateClient("Tmbd");
         _context = context;
     }
-    
+
     public async Task<Movie> GetMovieById(int id)
     {
         return await _client.GetFromJsonAsync<Movie>(
@@ -28,6 +28,13 @@ public class MovieRepository : IMovieRepository
     {
         var jsonContent = await _client.GetFromJsonAsync<TopRatedMovies>(
             $"movie/top_rated?language=en-US&page={pageNumber}");
+        return jsonContent.Movies;
+    }
+
+    public async Task<IEnumerable<Movie>> GetMostPopularMovies(int pageNumber)
+    {
+        var jsonContent = await _client.GetFromJsonAsync<TopRatedMovies>(
+            $"movie/popular?language=en-US&page={pageNumber}");
         return jsonContent.Movies;
     }
 }

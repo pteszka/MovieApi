@@ -32,11 +32,25 @@ namespace MovieApi.Controllers
             return Ok(movie);
         }
         
-        // GET: api/Movies?pageNumber=2
+        // GET: api/Movies/TopRated?pageNumber=2
         [HttpGet("TopRated")]
         public async Task<ActionResult<IEnumerable<Movie>>> GetTopRatedMovies(int pageNumber)
         {
             var movies = await _movieRepository.GetTopRatedMovies(pageNumber);
+
+            if (movies == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(movies);
+        }
+
+        // GET: api/Movies/MostPopular?pageNumber=2
+        [HttpGet("MostPopular")]
+        public async Task<ActionResult<IEnumerable<Movie>>> GetMostPopularMovies(int pageNumber)
+        {
+            var movies = await _movieRepository.GetMostPopularMovies(pageNumber);
 
             if (movies == null)
             {
